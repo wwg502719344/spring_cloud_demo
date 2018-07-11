@@ -1,5 +1,6 @@
 package com.wwg.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.wwg.emun.FilterType;
 import com.wwg.entity.UserInfo;
 import com.wwg.mapper.UserInfoMapper;
@@ -21,7 +22,7 @@ public class UserController {
     private UserInfoMapper userInfoMapper;
 
     @RequestMapping("/test")
-    public ResponseData test() {
+    public UserInfo test() {
 
         MapperFilter mapperFilter=MapperFilter.custom(UserInfo.class)
                 .addFilter("id", FilterType.EQ,1)
@@ -31,10 +32,10 @@ public class UserController {
         UserInfo us=u.get(0);
 
         ResponseData responseData= ResponseData.getInstance();
-        responseData.setEntity(us);
+        //responseData.setEntity(us);
         //直接转换陈json
-        //String usersJson = JSON.toJSONString(u);
+        String usersJson = JSON.toJSONString(u);
 
-        return responseData;
+        return us;
     }
 }
