@@ -1,7 +1,5 @@
 package com.wwg.controller;
 
-import com.alibaba.fastjson.JSON;
-
 import com.wwg.emun.FilterType;
 import com.wwg.entity.UserInfo;
 import com.wwg.mapper.UserInfoMapper;
@@ -34,7 +32,7 @@ public class UserController {
 
         ResponseData responseData= ResponseData.getInstance();
         responseData.setEntity(us);
-        //直接转换陈jsonceshiwwwqweqwe
+        //直接转换陈json
         //String usersJson = JSON.toJSONString(u);
 
         return responseData;
