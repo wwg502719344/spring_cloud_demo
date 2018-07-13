@@ -1,15 +1,13 @@
-#server 端口号
+#server
 server :
   port : 8100
 
-#spring配置
+#spring
 spring:
   datasource:
     url : jdbc:mysql://47.100.170.2:3306/W2G
     username : root
     password : healife605
-
-    #创建druid数据源
     driver-class-name : com.mysql.jdbc.Driver
     type : com.alibaba.druid.pool.DruidDataSource
     max-active : 20
@@ -22,18 +20,30 @@ spring:
     test-on-borrow : false
     test-on-return : false
 
+  application:
+    name: user
+
+
 
 #mybatis
 mybatis:
-    type-aliases-package: com.wwg.entity
-    mapper-locations: classpath:/mapperXml/*.xml
+  type-aliases-package: com.wwg.entity
+  mapper-locations: classpath:/mapperXml/*.xml
 
 
 mapper:
-    mappers:
-        - com.wwg.markerMapper.CommonMapper
-    not-empty: false
-    identity: MYSQL
+  mappers:
+      - com.wwg.markerMapper.CommonMapper
+  not-empty: false
+  identity: MYSQL
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
 
 
 
