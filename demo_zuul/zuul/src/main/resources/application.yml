@@ -1,0 +1,27 @@
+server:
+  port: 8100
+
+spring:
+  application:
+    name: zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+zuul:
+  routes:
+    user-zuul:
+      path: /user/**
+      sensitive-headers: Cookie,Set-Cookie,Authorization
+  #该方式会破坏Hystrix和rabbit特性
+  #user-route.server-id.path //该配置方式中，只跳转指定路由的微服务
+  #ignored-services: XXX  //忽视指定的微服务
+
+
+
