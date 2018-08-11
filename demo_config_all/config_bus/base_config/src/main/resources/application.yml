@@ -1,0 +1,55 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: base-config
+  rabbitmq:
+        host: 47.100.170.2
+        port: 5672
+        username: wwg
+        password: wwg
+  cloud:
+    bus:
+      trace:
+        enabled: true
+    config:
+      server:
+        git:
+          #uri: https://git.oschina.net/itmuch/spring-cloud-config-repo
+          #uri: https://git.coding.net/wwgtym/{application}
+          uri: https://git.coding.net/wwgtym/spring-cloud-conf.git
+          username: 502719344@qq.com                                         # Git仓库的账号
+          password: wuwenge1992511
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
+
+
+
+
+
+
+## http://localhost:8000/actuator/bus-refresh刷新配置文件，此处注意include不能写成 *，否则刷新不起作用
+
+## 其它几个文件application_xxx.yml，里面的xxx，代表不同的profile.配置文件同理，profile错误会默认匹配到默认配置文件
+
+## 测试案例:     /{application}/{profile}[/{label}]
+## 实际请求路径: http://localhost:8000/cloud-dev/dev/master查看当前文件下的配置文件
+
+## 测试案例:     /{application}-{profile}.yml
+## 实际请求路径: http://localhost:8000/cloud-dev-dev.yml
+
+## 测试案例:     /{label}/{application}-{profile}.yml
+## 实际请求路劲: http://localhost:8000/master/cloud-dev-dev.yml
+##             http://localhost:8000/master/cloud-production.yml
+
+## 测试：可以使用http://localhost:8000/spring-cloud-config-repo-default.yml 获取到http://localhost:8080/spring-cloud-config-repo下的application.properties
+## 配置git占位符的方式貌似只能读取application.properties文件，我在default的地方换成其他的都访问不了
+
+
+
+
+

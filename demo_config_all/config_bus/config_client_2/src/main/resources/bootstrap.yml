@@ -1,0 +1,18 @@
+#以下内容配置在bootstrap.yml中，陪在application中则会报错
+spring:
+  application:
+    name: cloud-dev
+  cloud:
+    config:
+      #默认是8888，并且会覆盖application.yml文件的配置
+      uri: http://localhost:8000
+      #profile对应config server所获取的配置文件中的profile,文件配置在maven中
+      profile: dev
+      #label对应git所选择的分支
+      label: master
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

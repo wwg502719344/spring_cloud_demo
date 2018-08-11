@@ -1,0 +1,10 @@
+server:
+  port: 8002
+
+
+spring:
+  rabbitmq:
+    host: 47.100.170.2
+    port: 5672
+    username: wwg
+    password: wwg
